@@ -9,7 +9,7 @@ tags = ["Interaction Nets", "Programming Languages"]
 
 ## Interaction Nets
 
-[Interaction Nets](@posts/2025-7-26_interaction-nets.md) are an elegant computation language with properties that make them optimal for parallel evaluation. They allow computations to be written as graphs of interconnected agents, with defined rules specifying how these agents are rewritten when they are connected via their principal ports. These rewrites, or interactions, can be evaluated in any order to produce the same final result, and can be evaluated concurrently by different processors.
+[Interaction Nets](/posts/2025-7-26-interaction-nets) are an elegant computation language with properties that make them optimal for parallel evaluation. They allow computations to be written as graphs of interconnected agents, with defined rules specifying how these agents are rewritten when they are connected via their principal ports. These rewrites, or interactions, can be evaluated in any order to produce the same final result, and can be evaluated concurrently by different processors.
 
 ## The Problem With Standard Interaction Nets
 
@@ -21,7 +21,7 @@ When toying around with a runtime implementation for standard interaction nets, 
 
 ## Example
 
-This example uses the same agent types in [my previous post about interaction nets](@posts/2025-7-26_interaction-nets.md), but revised so that the Boolean operator agents have two principal ports to receive inputs, and only one auxiliary port to produce the result.
+This example uses the same agent types in [my previous post about interaction nets](/posts/2025-7-26-interaction-nets), but revised so that the Boolean operator agents have two principal ports to receive inputs, and only one auxiliary port to produce the result.
 
 As shown below, an **AND** with two ports can be rewritten immediately if it is connected to **F** via either of its principal ports, connecting the **F** to the receiver of the **AND**'s output, but if either is connected to a **T**, the agent connected to the *other* principal port will be connected to the receiver of the **AND**'s output.
 

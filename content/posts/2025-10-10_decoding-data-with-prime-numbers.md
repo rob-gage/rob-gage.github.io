@@ -9,7 +9,7 @@ tags = ["Haskell", "Mathematics"]
 
 ## Program to Encode Words
 
-[My previous post](@posts/2025-10-2_encoding-data-with-prime-numbers.md) describes how any alphabet of symbols can be encoded as unique numbers. Now we will write the necessary functions to decode the numbers.
+[My previous post](/posts/2025-10-2-encoding-data-with-prime-numbers) describes how any alphabet of symbols can be encoded as unique numbers. Now we will write the necessary functions to decode the numbers.
 
 Our data type and functions below are used to encode the Hebrew alphabet (see previous post).
 
