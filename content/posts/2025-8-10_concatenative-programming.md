@@ -48,4 +48,4 @@ replacing them with their terms to produce `5 copy *`. `5 copy *` becomes `5 5 *
 Functions as data are called lambdas in Compose, and they are represented with parentheses.
 
 The code `( copy * ) copy compose` will evaluate to a leave lambda `( copy * copy * )`, allowing
-easy function composition at runtime. `5 ( copy * ) apply` evaluates to `36`.
+easy function composition at runtime. `6 ( copy * ) apply` evaluates to `36`.
