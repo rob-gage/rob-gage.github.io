@@ -11,4 +11,8 @@ max_projects = 3
 show_projects_first = true
 +++
 
-White Dogwood is my personal site to share projects, posts, and other things of interest.
+## White Dogwood is my personal site to share projects, posts, and other things of interest.
+
+## &nbsp;
+
+### [GitHub](https://github.com/rob-gage)
