@@ -17,7 +17,17 @@
         <subtitle>White Dogwood is Rob Gage&#x27;s personal site for showcasing articles, projects, and more.</subtitle>
     <link href="https://whitedogwood.net/tags/mathematics/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://whitedogwood.net/tags/mathematics/" rel="alternate" type="text/html"/>
-    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-10-10T00:00:00+00:00</updated><id>https://whitedogwood.net/tags/mathematics/atom.xml</id><entry xml:lang="en">
+    <generator uri="https://www.getzola.org/">Zola</generator><updated>2025-12-08T00:00:00+00:00</updated><id>https://whitedogwood.net/tags/mathematics/atom.xml</id><entry xml:lang="en">
+        <title>Symbolic Differentiation &amp; Computer Algebra Systems</title>
+        <published>2025-12-08T00:00:00+00:00</published>
+        <updated>2025-12-08T00:00:00+00:00</updated>
+        <author>
+            <name>Rob Gage</name>
+        </author>
+        <link rel="alternate" href="https://whitedogwood.net/posts/2025-12-8-symbolic-differentiation-and-computer-algebra-systems/" type="text/html"/>
+        <id>https://whitedogwood.net/posts/2025-12-8-symbolic-differentiation-and-computer-algebra-systems/</id>
+        <summary type="html">About symbolic differentiation and computer algebra systems</summary>
+        </entry><entry xml:lang="en">
         <title>Decoding Data with Prime Numbers</title>
         <published>2025-10-10T00:00:00+00:00</published>
         <updated>2025-10-10T00:00:00+00:00</updated>

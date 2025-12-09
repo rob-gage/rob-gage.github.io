@@ -9,7 +9,7 @@ tags = ["Mathematics"]
 
 ## Symbolic Differentiation
 
-Symbolic differentiation is the process of transforming the algebraic syntax tree of a function into a syntax tree for it's derivative function. A function implementing derivative rules can be recursively applied to a syntax tree to transform it into an accurate, but often unnecessarily complex derivative function. The result must be reduced into simplest form with another set of rules.
+Symbolic differentiation is the process of transforming the algebraic syntax tree of a function into a syntax tree for its derivative function. A function implementing derivative rules can be recursively applied to a syntax tree to transform it into an accurate, but often unnecessarily complex derivative function. The result must be reduced into simplest form with another set of rules.
 
 ## Computer Algebra Systems
 
