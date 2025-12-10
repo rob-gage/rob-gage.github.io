@@ -3,8 +3,6 @@ title = "Compose"
 description = "A concatenative programming language in a functional style"
 +++
 
-# The Compose Language
-
 ## [Documentation](https://composelanguage.org)
 
 ## [Installation](https://composelanguage.org/installation)
