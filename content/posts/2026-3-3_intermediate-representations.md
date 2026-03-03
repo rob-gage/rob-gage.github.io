@@ -11,7 +11,7 @@ tags = ["Programming Languages"]
 
 Modern programming language compilers usually do not generate code from or do optimizations on the syntax structure produced by parsing the language. They usually first validate it and translate it to a intermediate representation (IR), a more simple structure that can be manipulated and optimized by the compiler, and eventually translated into the compiler's target language.
 
-To demonstrate these three IR forms, we will use the following Rust function as an example, which takes an integer and returns `true` if it is greater than or equal to `0`, otherwise returning `false`.
+To demonstrate three common IR forms, we will use the following Rust function as an example, which takes an integer and returns `true` if it is greater than or equal to `0`, otherwise returning `false`.
 
 ```rust
 fn is_not_negative(integer: i64) -> bool {
@@ -25,21 +25,21 @@ Static single assignment ([SSA](https://en.wikipedia.org/wiki/Static_single-assi
 
 ```
 function is_not_negative(integer)
-    entry_block:
-    		comparison := integer >= 0
-     		branch comparison, then_block, else_block
-    then_block:
-    		then_result := true
-    		goto merge
-    else_block:
-    		else_result := false
-      	goto merge
-    merge:
-    		let result = φ(then_result, else_result)
-      	return result
+	entry_block:
+		comparison := integer >= 0
+		branch comparison, then_block, else_block
+	then_block:
+		then_result := true
+		goto merge
+	else_block:
+		else_result := false
+		goto merge
+	merge:
+		result := φ(then_result, else_result)
+		return result
 ```
 
-Note: φ denotes a phi-node, a construct that selects a value associated with the branch taken to reach the current block.
+Note: `φ` denotes a phi-node, a construct that selects a value associated with the branch taken to reach the current block.
 
 ## Continuation Passing Style
 
@@ -47,13 +47,13 @@ In continuation passing style ([CPS](https://en.wikipedia.org/wiki/Continuation-
 
 ```
 function is_not_negative(integer, continuation)
-    entry_block:
-        comparison := integer >= 0
-        branch comparison, then_block, else_block
-    then_block:
-        call continuation(true)
-    else_block:
-        call continuation(false)
+	entry_block:
+		comparison := integer >= 0
+		branch comparison, then_block, else_block
+	then_block:
+		call continuation(true)
+	else_block:
+		call continuation(false)
 ```
 
 ## A-normal Form
@@ -62,7 +62,7 @@ A-normal form ([ANF](https://en.wikipedia.org/wiki/A-normal_form)) is based on e
 
 ```
 function is_not_negative(integer)
-		let comparison = integer >= 0 in
-		let result = if comparison then true else false in
-		result
+	let comparison = integer >= 0 in
+	let result = if comparison then true else false in
+	result
 ```

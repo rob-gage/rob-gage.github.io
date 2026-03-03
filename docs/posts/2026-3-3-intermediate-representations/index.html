@@ -9,7 +9,7 @@ content="default-src 'self';font-src 'self' data:;img-src 'self' https://* data:
 
     
     <title>
-White Dogwood • Symbolic Differentiation & Computer Algebra Systems</title>
+White Dogwood • Intermediate Representations</title>
 
     
     
@@ -31,18 +31,18 @@ White Dogwood • Symbolic Differentiation & Computer Algebra Systems</title>
         <link rel="stylesheet" href="https://whitedogwood.net/stylesheet.css?h=c95a97f1fb5c6d83f8f9" />
 
     <meta name="color-scheme" content="light dark" />
-        <meta name="description" content="About symbolic differentiation and computer algebra systems" />
-        <meta property="og:description" content="About symbolic differentiation and computer algebra systems" />
+        <meta name="description" content="A description of three common intermediate representation forms used in compilers" />
+        <meta property="og:description" content="A description of three common intermediate representation forms used in compilers" />
 
     
 
-    <meta property="og:title" content="Symbolic Differentiation & Computer Algebra Systems" />
+    <meta property="og:title" content="Intermediate Representations" />
     <meta property="og:type" content="article" />
 
     
 <meta property="og:locale" content="en_GB" />
 
-    <meta property="og:url" content="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2025-12-8-symbolic-differentiation-and-computer-algebra-systems&#x2F;" /><meta property="og:site_name" content="White Dogwood">
+    <meta property="og:url" content="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2026-3-3-intermediate-representations&#x2F;" /><meta property="og:site_name" content="White Dogwood">
         <noscript><link rel="stylesheet" href="https://whitedogwood.net/no_js.css"/></noscript>
         <script type="text/javascript" src="https://whitedogwood.net/js/initializeTheme.min.js"></script>
         <script defer src="https://whitedogwood.net/js/themeSwitcher.min.js"></script>
@@ -132,37 +132,65 @@ White Dogwood • Symbolic Differentiation & Computer Algebra Systems</title>
 <main>
     <article class="h-entry">
         <h1 class="p-name article-title">
-            Symbolic Differentiation &amp; Computer Algebra Systems
+            Intermediate Representations
         </h1>
-        <a class="u-url u-uid" href="https://whitedogwood.net/posts/2025-12-8-symbolic-differentiation-and-computer-algebra-systems/"></a>
+        <a class="u-url u-uid" href="https://whitedogwood.net/posts/2026-3-3-intermediate-representations/"></a>
 
         <ul class="meta"><span class="hidden p-author h-card">
 <a rel="author" href="https:&#x2F;&#x2F;whitedogwood.net" class="u-url " title="Rob Gage">Rob Gage</a>
 </span>
-<li><time class="dt-published" datetime="2025-12-08">8 December 2025</time></li><li title="221 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span></li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/mathematics/">Mathematics</a></li>
+<li><time class="dt-published" datetime="2026-03-03">3 March 2026</time></li><li title="278 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span></li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/programming-languages/">Programming Languages</a></li>
         </ul>
-            <p class="p-summary" hidden>About symbolic differentiation and computer algebra systems</p><section class="e-content body"><h2 id="symbolic-differentiation"><a class="header-anchor no-hover-padding" href="#symbolic-differentiation" aria-label="Anchor link for: symbolic-differentiation"><span class="link-icon" aria-hidden="true"></span></a>
-Symbolic Differentiation</h2>
-<p>Symbolic differentiation is the process of transforming the algebraic syntax tree of a function into a syntax tree for its derivative function. A function implementing derivative rules can be recursively applied to a syntax tree to transform it into an accurate, but often unnecessarily complex derivative function. The result must be reduced into simplest form with another set of rules.</p>
-<h2 id="computer-algebra-systems"><a class="header-anchor no-hover-padding" href="#computer-algebra-systems" aria-label="Anchor link for: computer-algebra-systems"><span class="link-icon" aria-hidden="true"></span></a>
-Computer Algebra Systems</h2>
-<p>A computer algebra system (CAS) is a general purpose tool for working with algebraic expressions. They are often used to graph functions, or manipulate equations to isolate variables. They typically implement reduction rules for algebraic syntax structures that perform a reasonable number of simplifications on the structure.</p>
-<h2 id="canonicalization-of-algebraic-expressions"><a class="header-anchor no-hover-padding" href="#canonicalization-of-algebraic-expressions" aria-label="Anchor link for: canonicalization-of-algebraic-expressions"><span class="link-icon" aria-hidden="true"></span></a>
-Canonicalization of Algebraic Expressions</h2>
-<p>Complete canonicalization of algebraic expressions is not always possible. This is a consequence of the equality of algebraic expressions being computationally undecidable (see <a href="https://en.wikipedia.org/wiki/Richardson&#x27;s_theorem">Richardson's Theorem</a>). Mature CASes implement very many simplification rules to be able to reduce most potential expressions, but there will always exist an expression that a CAS cannot fully simplify.</p>
-<h2 id="my-differentiation-engine"><a class="header-anchor no-hover-padding" href="#my-differentiation-engine" aria-label="Anchor link for: my-differentiation-engine"><span class="link-icon" aria-hidden="true"></span></a>
-My Differentiation Engine</h2>
-<p>I am working on a differentiation engine that can correctly differentiate multivariable functions,
-and graph single variable functions and their derivatives. It is still a prototype, and implementing a sufficient set of simplification rules still needs to be done.</p>
-<p>Try it: <a href="https://calculus.dogwood.cloud">Differentiation Engine</a></p>
+            <p class="p-summary" hidden>A description of three common intermediate representation forms used in compilers</p><section class="e-content body"><h2 id="compiler-intermediate-representations"><a class="header-anchor no-hover-padding" href="#compiler-intermediate-representations" aria-label="Anchor link for: compiler-intermediate-representations"><span class="link-icon" aria-hidden="true"></span></a>
+Compiler Intermediate Representations</h2>
+<p>Modern programming language compilers usually do not generate code from or do optimizations on the syntax structure produced by parsing the language. They usually first validate it and translate it to a intermediate representation (IR), a more simple structure that can be manipulated and optimized by the compiler, and eventually translated into the compiler's target language.</p>
+<p>To demonstrate three common IR forms, we will use the following Rust function as an example, which takes an integer and returns <code>true</code> if it is greater than or equal to <code>0</code>, otherwise returning <code>false</code>.</p>
+<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">fn is_not_negative(integer: i64) -&gt; bool {
+	if integer &gt;= 0 { true } else { false }
+}
+</code></pre>
+<h2 id="static-single-assignment"><a class="header-anchor no-hover-padding" href="#static-single-assignment" aria-label="Anchor link for: static-single-assignment"><span class="link-icon" aria-hidden="true"></span></a>
+Static Single Assignment</h2>
+<p>Static single assignment (<a href="https://en.wikipedia.org/wiki/Static_single-assignment_form">SSA</a>) is an IR form that allows variables to be assigned only once. SSA is very explicit about control flow and data dependencies, which makes it ideal for imperative languages.</p>
+<pre><code>function is_not_negative(integer)
+	entry_block:
+		comparison := integer &gt;= 0
+		branch comparison, then_block, else_block
+	then_block:
+		then_result := true
+		goto merge
+	else_block:
+		else_result := false
+		goto merge
+	merge:
+		result := φ(then_result, else_result)
+		return result
+</code></pre>
+<p>Note: <code>φ</code> denotes a phi-node, a construct that selects a value associated with the branch taken to reach the current block.</p>
+<h2 id="continuation-passing-style"><a class="header-anchor no-hover-padding" href="#continuation-passing-style" aria-label="Anchor link for: continuation-passing-style"><span class="link-icon" aria-hidden="true"></span></a>
+Continuation Passing Style</h2>
+<p>In continuation passing style (<a href="https://en.wikipedia.org/wiki/Continuation-passing_style">CPS</a>), functions take the function that consumes their result as a parameter. CPS eliminates the need for phi-nodes and expresses control flow via continuations, which is convenient for functional programming languages. Every function call being a tail call allows the compiler or runtime to reuse stack frames.</p>
+<pre><code>function is_not_negative(integer, continuation)
+	entry_block:
+		comparison := integer &gt;= 0
+		branch comparison, then_block, else_block
+	then_block:
+		call continuation(true)
+	else_block:
+		call continuation(false)
+</code></pre>
+<h2 id="a-normal-form"><a class="header-anchor no-hover-padding" href="#a-normal-form" aria-label="Anchor link for: a-normal-form"><span class="link-icon" aria-hidden="true"></span></a>
+A-normal Form</h2>
+<p>A-normal form (<a href="https://en.wikipedia.org/wiki/A-normal_form">ANF</a>) is based on expressions, unlike SSA and CPS, which are based on control flow. ANF functions only take as parameters values that represent constants or variables that have already been bound. As a result, ANF preserves the structure of expression-based functions, but still encodes evaluation order like SSA.</p>
+<pre><code>function is_not_negative(integer)
+	let comparison = integer &gt;= 0 in
+	let result = if comparison then true else false in
+	result
+</code></pre>
 
         </section>
                 
                 
-                    
-                        
-                        
-                        
                     
                     
                         
@@ -172,10 +200,9 @@ and graph single variable functions and their derivatives. It is still a prototy
                 
                 
             <nav class="full-width article-navigation">
-                <div><a href="https://whitedogwood.net/posts/2026-3-3-intermediate-representations/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
-                <p aria-hidden="true" id="left_title">Intermediate Representations</p></div>
-                <div><a href="https://whitedogwood.net/posts/compose-language-introduction/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
-                <p aria-hidden="true" id="right_title">Compose Language Introduction</p></div>
+                <div></div>
+                <div><a href="https://whitedogwood.net/posts/2025-12-8-symbolic-differentiation-and-computer-algebra-systems/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">Symbolic Differentiation &amp; Computer Algebra Systems</p></div>
             </nav>
         
         
