@@ -4,7 +4,7 @@ date = 2026-03-03
 description = "A description of three common intermediate representation forms used in compilers"
 
 [taxonomies]
-tags = ["Programming Languages"]
+tags = ["Compilers", "Programming Languages"]
 +++
 
 ## Compiler Intermediate Representations
@@ -43,7 +43,7 @@ Note: `φ` denotes a phi-node, a construct that selects a value associated with 
 
 ## Continuation Passing Style
 
-In continuation passing style ([CPS](https://en.wikipedia.org/wiki/Continuation-passing_style)), functions take the function that consumes their result as a parameter. CPS eliminates the need for phi-nodes and expresses control flow via continuations, which is convenient for functional programming languages. Every function call being a tail call allows the compiler or runtime to reuse stack frames.
+In continuation passing style ([CPS](https://en.wikipedia.org/wiki/Continuation-passing_style)), a function takes the function that consumes its result as a parameter. CPS eliminates the need for phi-nodes and expresses control flow via continuations, which is convenient for functional programming languages. Every function call being a tail call allows the compiler or runtime to reuse stack frames.
 
 ```
 function is_not_negative(integer, continuation)
