@@ -9,7 +9,7 @@ content="default-src 'self';font-src 'self' data:;img-src 'self' https://* data:
 
     
     <title>
-White Dogwood • Archive</title>
+White Dogwood • Parallel ANF</title>
 
     
     
@@ -31,18 +31,18 @@ White Dogwood • Archive</title>
         <link rel="stylesheet" href="https://whitedogwood.net/stylesheet.css?h=c95a97f1fb5c6d83f8f9" />
 
     <meta name="color-scheme" content="light dark" />
-        <meta name="description" content="White Dogwood is Rob Gage&#x27;s personal site for showcasing articles, projects, and more." />
-        <meta property="og:description" content="White Dogwood is Rob Gage&#x27;s personal site for showcasing articles, projects, and more." />
+        <meta name="description" content="A description of an ANF-like intermediate representation that is better suited for parallel evaluation" />
+        <meta property="og:description" content="A description of an ANF-like intermediate representation that is better suited for parallel evaluation" />
 
     
 
-    <meta property="og:title" content="White Dogwood" />
+    <meta property="og:title" content="Parallel ANF" />
     <meta property="og:type" content="article" />
 
     
 <meta property="og:locale" content="en_GB" />
 
-    <meta property="og:url" content="https:&#x2F;&#x2F;whitedogwood.net&#x2F;archive&#x2F;" /><meta property="og:site_name" content="White Dogwood">
+    <meta property="og:url" content="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2026-3-10-parallel-anf&#x2F;" /><meta property="og:site_name" content="White Dogwood">
         <noscript><link rel="stylesheet" href="https://whitedogwood.net/no_js.css"/></noscript>
         <script type="text/javascript" src="https://whitedogwood.net/js/initializeTheme.min.js"></script>
         <script defer src="https://whitedogwood.net/js/themeSwitcher.min.js"></script>
@@ -127,119 +127,97 @@ White Dogwood • Archive</title>
 
 
 
-<h1 class="title-container section-title bottom-divider">
-    Archive
-</h1>
 
 
+<main>
+    <article class="h-entry">
+        <h1 class="p-name article-title">
+            Parallel ANF
+        </h1>
+        <a class="u-url u-uid" href="https://whitedogwood.net/posts/2026-3-10-parallel-anf/"></a>
+
+        <ul class="meta"><span class="hidden p-author h-card">
+<a rel="author" href="https:&#x2F;&#x2F;whitedogwood.net" class="u-url " title="Rob Gage">Rob Gage</a>
+</span>
+<li><time class="dt-published" datetime="2026-03-10">10 March 2026</time></li><li title="272 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span></li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/compilers/">Compilers</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/programming-languages/">Programming Languages</a></li>
+        </ul>
+            <p class="p-summary" hidden>A description of an ANF-like intermediate representation that is better suited for parallel evaluation</p><section class="e-content body"><h2 id="standard-anf"><a class="header-anchor no-hover-padding" href="#standard-anf" aria-label="Anchor link for: standard-anf"><span class="link-icon" aria-hidden="true"></span></a>
+Standard ANF</h2>
+<p>ANF is an expression-based language form used in intermediate representation of programs. It is a good choice for functional programming language compilers, because it allows functions to be represented as expression trees while still describing the evaluation order of computations through sequenced bindings. However, the encoded evaluation order does not necessarily describe data dependencies. A simple example is function <code>f</code> shown below that takes parameters <code>a</code>, <code>b</code>, <code>c</code>, and
+<code>d</code> and returns <code>(a + b) ⋅ (c + d)</code>.</p>
+<pre><code>function f(a, b, c, d)
+	let x = a + b in
+	let y = c + d in
+	let result = x ⋅ y in
+	result
+</code></pre>
+<p>Variable <code>x</code> is first bound to the sum of <code>a</code> and <code>b</code>, and then variable <code>y</code> is bound to the sum of <code>c</code> and <code>d</code>. Despite <code>y</code> not being dependent on <code>x</code>, it is still represented as a separate evaluation step in the binding chain.</p>
+<h2 id="binding-blocks"><a class="header-anchor no-hover-padding" href="#binding-blocks" aria-label="Anchor link for: binding-blocks"><span class="link-icon" aria-hidden="true"></span></a>
+Binding Blocks</h2>
+<p>In many programs, multiple computations do not depend on each other and could be evaluated concurrently on a parallel processor. Pure functions (functions that do not have side effects) may be evaluated in any order while preserving determinism. Standard ANF represents non-dependent computations as separate steps in the expression tree, which can obscure opportunities for concurrent evaluation.</p>
+<p>A solution for this is to modify ANF to use "binding blocks", which represent groups of independent computations. The bindings in a block may be evaluated in any order, or potentially at the same time, because none of them may reference each other.</p>
+<pre><code>function f(a, b, c, d)
+	let x = a + b, y = c + d in
+	let result = x ⋅ y in
+	result
+</code></pre>
+<p>This example demonstrates how binding blocks can be used to rewrite function <code>f</code> in a way that indicates to a compiler or runtime that both additions can be done out of order or at the same time before being used as factors in the multiplication.</p>
+
+        </section>
+                
+                
+                    
+                    
+                        
+                        
+                        
+                    
+                
+                
+            <nav class="full-width article-navigation">
+                <div></div>
+                <div><a href="https://whitedogwood.net/posts/2026-3-3-intermediate-representations/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
+                <p aria-hidden="true" id="right_title">Intermediate Representations</p></div>
+            </nav>
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+        </article>
+</main>
 
 
-<div class="archive">
-    <ul class="list-with-title">
-
-        
-        
-        
-        
-            
-        
-            
-        
-
-        
-        
-            
-            
-            <li>
-                <h2 class="listing-title">2026</h2>
-                <ul class="listing">
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">3&#x2F;10</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2026-3-10-parallel-anf&#x2F;" title="Parallel ANF">Parallel ANF</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">3&#x2F;3</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2026-3-3-intermediate-representations&#x2F;" title="Intermediate Representations">Intermediate Representations</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            
-        
-            
-            
-            <li>
-                <h2 class="listing-title">2025</h2>
-                <ul class="listing">
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">12&#x2F;8</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2025-12-8-symbolic-differentiation-and-computer-algebra-systems&#x2F;" title="Symbolic Differentiation &amp; Computer Algebra Systems">Symbolic Differentiation &amp; Computer Algebra Systems</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">11&#x2F;10</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;compose-language-introduction&#x2F;" title="Compose Language Introduction">Compose Language Introduction</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">10&#x2F;25</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;polyactive-agents-multiple-principal-ports&#x2F;" title="Polyactive Agents: Multiple Principal Ports">Polyactive Agents: Multiple Principal Ports</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">10&#x2F;10</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;decoding-data-with-prime-numbers&#x2F;" title="Decoding Data with Prime Numbers">Decoding Data with Prime Numbers</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">10&#x2F;2</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2025-10-2-encoding-data-with-prime-numbers&#x2F;" title="Encoding Data with Prime Numbers">Encoding Data with Prime Numbers</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">9&#x2F;27</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2025-9-27-parser-combinators&#x2F;" title="Parser Combinators">Parser Combinators</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">8&#x2F;10</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2025-8-10-concatenative-programming&#x2F;" title="Concatenative Programming">Concatenative Programming</a>
-                    </li>
-                    
-                    <li class="listing-item">
-                        <div class="post-time">
-                            <span class="date">7&#x2F;26</span>
-                        </div>
-                        <a href="https:&#x2F;&#x2F;whitedogwood.net&#x2F;posts&#x2F;2025-7-26-interaction-nets&#x2F;" title="Interaction Nets">Interaction Nets</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            
-        
-    </ul>
-</div>
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://whitedogwood.net/js/copyCodeToClipboard.min.js"></script>
 
 
     </div>

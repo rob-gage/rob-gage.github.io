@@ -139,7 +139,7 @@ White Dogwood • Intermediate Representations</title>
         <ul class="meta"><span class="hidden p-author h-card">
 <a rel="author" href="https:&#x2F;&#x2F;whitedogwood.net" class="u-url " title="Rob Gage">Rob Gage</a>
 </span>
-<li><time class="dt-published" datetime="2026-03-03">3 March 2026</time></li><li title="278 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span></li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/programming-languages/">Programming Languages</a></li>
+<li><time class="dt-published" datetime="2026-03-03">3 March 2026</time></li><li title="279 words"><span class='separator' aria-hidden='true'>•</span>2 min read</li><li class="tag"><span class='separator' aria-hidden='true'>•</span></li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/compilers/">Compilers</a>,&nbsp;</li><li class="tag"><a class="p-category" href="https://whitedogwood.net/tags/programming-languages/">Programming Languages</a></li>
         </ul>
             <p class="p-summary" hidden>A description of three common intermediate representation forms used in compilers</p><section class="e-content body"><h2 id="compiler-intermediate-representations"><a class="header-anchor no-hover-padding" href="#compiler-intermediate-representations" aria-label="Anchor link for: compiler-intermediate-representations"><span class="link-icon" aria-hidden="true"></span></a>
 Compiler Intermediate Representations</h2>
@@ -169,7 +169,7 @@ Static Single Assignment</h2>
 <p>Note: <code>φ</code> denotes a phi-node, a construct that selects a value associated with the branch taken to reach the current block.</p>
 <h2 id="continuation-passing-style"><a class="header-anchor no-hover-padding" href="#continuation-passing-style" aria-label="Anchor link for: continuation-passing-style"><span class="link-icon" aria-hidden="true"></span></a>
 Continuation Passing Style</h2>
-<p>In continuation passing style (<a href="https://en.wikipedia.org/wiki/Continuation-passing_style">CPS</a>), functions take the function that consumes their result as a parameter. CPS eliminates the need for phi-nodes and expresses control flow via continuations, which is convenient for functional programming languages. Every function call being a tail call allows the compiler or runtime to reuse stack frames.</p>
+<p>In continuation passing style (<a href="https://en.wikipedia.org/wiki/Continuation-passing_style">CPS</a>), a function takes the function that consumes its result as a parameter. CPS eliminates the need for phi-nodes and expresses control flow via continuations, which is convenient for functional programming languages. Every function call being a tail call allows the compiler or runtime to reuse stack frames.</p>
 <pre><code>function is_not_negative(integer, continuation)
 	entry_block:
 		comparison := integer &gt;= 0
@@ -192,6 +192,10 @@ A-normal Form</h2>
                 
                 
                     
+                        
+                        
+                        
+                    
                     
                         
                         
@@ -200,7 +204,8 @@ A-normal Form</h2>
                 
                 
             <nav class="full-width article-navigation">
-                <div></div>
+                <div><a href="https://whitedogwood.net/posts/2026-3-10-parallel-anf/" aria-label="Next" aria-describedby="left_title"><span class="arrow">←</span>&nbsp;Next</a>
+                <p aria-hidden="true" id="left_title">Parallel ANF</p></div>
                 <div><a href="https://whitedogwood.net/posts/2025-12-8-symbolic-differentiation-and-computer-algebra-systems/" aria-label="Prev" aria-describedby="right_title">Prev&nbsp;<span class="arrow">→</span></a>
                 <p aria-hidden="true" id="right_title">Symbolic Differentiation &amp; Computer Algebra Systems</p></div>
             </nav>
